@@ -88,6 +88,13 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
     script += `echo "=========================================="\n`;
     script += `echo "🎉 SETUP HOÀN TẤT!"\n`;
     script += `echo "=========================================="\n`;
+    script += `echo "Lưu ý quan trọng sau khi cài xong:"\n`;
+    script += `echo "1. Đăng xuất và Đăng nhập lại để Ibus-Bamboo hoạt động."\n`;
+    script += `echo "2. Mở Settings > Region & Language > Input Sources > Thêm 'Vietnamese (Bamboo)'."\n`;
+    script += `echo "3. Mở Terminal mới để NVM nhận Node 24."\n`;
+    script += `echo "4. TimescaleDB đã sẵn sàng trên PostgreSQL 16 (User mặc định: postgres)."\n`;
+    script += `echo "5. Mở 'Tweaks' -> 'Appearance' để chọn theme WhiteSur-Dark."\n`;
+    script += `echo "=========================================="\n`;
 
     return script;
   }, [categories]);
@@ -113,12 +120,12 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
       <div className="max-w-6xl mx-auto relative z-10">
         <header className="mb-12 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-teal-300 drop-shadow-sm">
-            Setup Builder
+            Tạo Script Cài Đặt
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Build your personalized Ubuntu setup script in seconds. Select the
-            tools, databases, and utilities you need. Add new .json files to the
-            data folder to extend the options!
+            Tạo script cài đặt Ubuntu cá nhân hóa của bạn trong vài giây. Chọn
+            các công cụ, cơ sở dữ liệu và tiện ích bạn cần. Thêm các file .json
+            mới vào thư mục data để mở rộng thêm tùy chọn!
           </p>
         </header>
 

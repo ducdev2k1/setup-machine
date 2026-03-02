@@ -27,7 +27,7 @@ const ScriptPreview = ({ script, onDownload }: ScriptPreviewProps) => {
             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
           />
         </svg>
-        Download Script
+        Tải Script
       </button>
 
       <div className="w-full">
@@ -39,7 +39,7 @@ const ScriptPreview = ({ script, onDownload }: ScriptPreviewProps) => {
             <span className="w-6 h-6 rounded-md bg-teal-500/20 flex items-center justify-center text-teal-400 text-xs">
               📝
             </span>
-            Script Preview
+            Xem trước Script
           </span>
           <svg
             className={`w-5 h-5 transition-transform duration-300 ${
