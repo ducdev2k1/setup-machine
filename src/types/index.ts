@@ -6,4 +6,9 @@ export interface Option {
   selected: boolean;
 }
 
-export type Category = "devTools" | "databases" | "utilities";
+export interface CategoryData {
+  category: string;
+  title: string;
+  icon: string;
+  items: Option[];
+}

@@ -2,26 +2,42 @@ import { useMemo, useState } from "react";
 import Instructions from "./components/Instructions";
 import ScriptPreview from "./components/ScriptPreview";
 import SectionPanel from "./components/SectionPanel";
-import databasesData from "./data/databases.json";
-import devToolsData from "./data/dev-tools.json";
-import utilitiesData from "./data/utilities.json";
 import "./index.css";
-import type { Category, Option } from "./types";
+import type { CategoryData, Option } from "./types";
+
+// Dynamically load all JSON files in the data directory
+const jsonModules = import.meta.glob("./data/*.json", { eager: true });
+const initialCategories: CategoryData[] = Object.values(jsonModules).map(
+  (mod: unknown) =>
+    (mod as { default: CategoryData }).default || (mod as CategoryData),
+);
+
+// Optional: sort categories to maintain a specific order (devTools -> databases -> utilities)
+const orderMap: Record<string, number> = {
+  devTools: 1,
+  databases: 2,
+  utilities: 3,
+};
+initialCategories.sort(
+  (a, b) => (orderMap[a.category] || 99) - (orderMap[b.category] || 99),
+);
 
 function App() {
-  const [devTools, setDevTools] = useState<Option[]>(devToolsData);
-  const [databases, setDatabases] = useState<Option[]>(databasesData);
-  const [utilities, setUtilities] = useState<Option[]>(utilitiesData);
+  const [categories, setCategories] =
+    useState<CategoryData[]>(initialCategories);
 
-  const toggleSelection = (id: string, category: Category) => {
-    const updateState = (prevState: Option[]) =>
-      prevState.map((item) =>
-        item.id === id ? { ...item, selected: !item.selected } : item,
-      );
-
-    if (category === "devTools") setDevTools(updateState);
-    if (category === "databases") setDatabases(updateState);
-    if (category === "utilities") setUtilities(updateState);
+  const toggleSelection = (id: string, categoryId: string) => {
+    setCategories((prevCategories) =>
+      prevCategories.map((cat) => {
+        if (cat.category !== categoryId) return cat;
+        return {
+          ...cat,
+          items: cat.items.map((item) =>
+            item.id === id ? { ...item, selected: !item.selected } : item,
+          ),
+        };
+      }),
+    );
   };
 
   const generatedScript = useMemo(() => {
@@ -44,7 +60,7 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
       if (selected.length === 0) return;
 
       script += `\necho "=========================================="\n`;
-      script += `echo "${step}. ${title}"\n`;
+      script += `echo "${step}. ${title.toUpperCase()}"\n`;
       script += `echo "=========================================="\n`;
 
       selected.forEach((item) => {
@@ -54,16 +70,27 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
       step++;
     };
 
-    addSection("CÀI ĐẶT CÔNG CỤ PHÁT TRIỂN", devTools);
-    addSection("CÀI ĐẶT CƠ SỞ DỮ LIỆU", databases);
-    addSection("CÀI ĐẶT TIỆN ÍCH & GIAO DIỆN", utilities);
+    categories.forEach((cat) => {
+      // Use custom titles for the default sections to maintain exact bash script output
+      // where appropriate, or fallback to the JSON title
+      const sectionTitle =
+        cat.category === "devTools"
+          ? "CÀI ĐẶT CÔNG CỤ PHÁT TRIỂN"
+          : cat.category === "databases"
+            ? "CÀI ĐẶT CƠ SỞ DỮ LIỆU"
+            : cat.category === "utilities"
+              ? "CÀI ĐẶT TIỆN ÍCH & GIAO DIỆN"
+              : `CÀI ĐẶT ${cat.title}`;
+
+      addSection(sectionTitle, cat.items);
+    });
 
     script += `echo "=========================================="\n`;
     script += `echo "🎉 SETUP HOÀN TẤT!"\n`;
     script += `echo "=========================================="\n`;
 
     return script;
-  }, [devTools, databases, utilities]);
+  }, [categories]);
 
   const downloadScript = () => {
     const blob = new Blob([generatedScript], { type: "text/x-sh" });
@@ -90,31 +117,24 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Build your personalized Ubuntu setup script in seconds. Select the
-            tools, databases, and utilities you need.
+            tools, databases, and utilities you need. Add new .json files to the
+            data folder to extend the options!
           </p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-4">
             <div className="glass-panel rounded-2xl p-8">
-              <SectionPanel
-                title="Developer Tools"
-                items={devTools}
-                category="devTools"
-                onToggleSelection={toggleSelection}
-              />
-              <SectionPanel
-                title="Databases"
-                items={databases}
-                category="databases"
-                onToggleSelection={toggleSelection}
-              />
-              <SectionPanel
-                title="Utilities & Themes"
-                items={utilities}
-                category="utilities"
-                onToggleSelection={toggleSelection}
-              />
+              {categories.map((cat) => (
+                <SectionPanel
+                  key={cat.category}
+                  title={cat.title}
+                  icon={cat.icon}
+                  categoryId={cat.category}
+                  items={cat.items}
+                  onToggleSelection={toggleSelection}
+                />
+              ))}
             </div>
           </div>
 
