@@ -11,6 +11,13 @@
       "selected": true
     },
     {
+      "id": "nodejs24",
+      "name": "Node.js 24 (via NVM)",
+      "description": "Môi trường thực thi JavaScript",
+      "script": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\nnvm install 24\nnvm use 24\nnvm alias default 24",
+      "selected": true
+    },
+    {
       "id": "vscode",
       "name": "VS Code",
       "description": "Trình soạn thảo mã của Microsoft",
@@ -32,17 +39,24 @@
       "selected": false
     },
     {
-      "id": "nodejs24",
-      "name": "Node.js 24 (via NVM)",
-      "description": "Môi trường thực thi JavaScript",
-      "script": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\nnvm install 24\nnvm use 24\nnvm alias default 24",
-      "selected": false
-    },
-    {
       "id": "postman",
       "name": "Postman",
       "description": "Công cụ kiểm thử API",
       "script": "sudo snap install postman",
+      "selected": false
+    },
+    {
+      "id": "webstorm",
+      "name": "WebStorm",
+      "description": "IDE cho lập trình viên Web",
+      "script": "sudo snap install webstorm --classic",
+      "selected": false
+    },
+    {
+      "id": "s3explorer",
+      "name": "S3Explorer",
+      "description": "Trình quản lý tệp tin đồ họa cho Amazon S3",
+      "script": "sudo snap install s3explorer",
       "selected": false
     }
   ]

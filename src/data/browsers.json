@@ -1,0 +1,35 @@
+{
+  "category": "browsers",
+  "title": "Trình Duyệt Web",
+  "icon": "🌐",
+  "items": [
+    {
+      "id": "chrome",
+      "name": "Google Chrome",
+      "description": "Trình duyệt phổ biến của Google",
+      "script": "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -\nsudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'\nsudo apt update\nsudo apt install -y google-chrome-stable",
+      "selected": false
+    },
+    {
+      "id": "brave",
+      "name": "Brave Browser",
+      "description": "Trình duyệt nhanh, bảo mật và chặn quảng cáo",
+      "script": "sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg\necho \"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main\"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list\nsudo apt update\nsudo apt install -y brave-browser",
+      "selected": false
+    },
+    {
+      "id": "edge",
+      "name": "Microsoft Edge",
+      "description": "Trình duyệt của Microsoft cho Linux",
+      "script": "curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg\nsudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/\nsudo sh -c 'echo \"deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main\" > /etc/apt/sources.list.d/microsoft-edge-dev.list'\nsudo rm microsoft.gpg\nsudo apt update\nsudo apt install -y microsoft-edge-stable",
+      "selected": false
+    },
+    {
+      "id": "firefox",
+      "name": "Mozilla Firefox",
+      "description": "Trình duyệt mã nguồn mở",
+      "script": "sudo snap install firefox",
+      "selected": false
+    }
+  ]
+}
