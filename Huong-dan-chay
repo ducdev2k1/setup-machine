@@ -1,0 +1,5 @@
+# Cấp quyền thực thi cho file script
+chmod +x setup_machine.sh
+
+# Chạy file script
+./setup_machine.sh

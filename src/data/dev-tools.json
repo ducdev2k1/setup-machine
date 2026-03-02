@@ -1,0 +1,44 @@
+[
+  {
+    "id": "git",
+    "name": "Git",
+    "description": "Version control system",
+    "script": "sudo apt install -y git\necho \"Phiên bản Git: $(git --version)\"",
+    "selected": true
+  },
+  {
+    "id": "vscode",
+    "name": "VS Code",
+    "description": "Code editor by Microsoft",
+    "script": "sudo snap install code --classic",
+    "selected": false
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor AI",
+    "description": "AI-powered Code Editor",
+    "script": "curl https://cursor.com/install -fsS | bash",
+    "selected": false
+  },
+  {
+    "id": "antigravity",
+    "name": "Antigravity",
+    "description": "Antigravity editor tool",
+    "script": "sudo mkdir -p /etc/apt/keyrings\ncurl -fsSL https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor --yes -o /etc/apt/keyrings/antigravity-repo-key.gpg\necho \"deb [signed-by=/etc/apt/keyrings/antigravity-repo-key.gpg] https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/ antigravity-debian main\" | sudo tee /etc/apt/sources.list.d/antigravity.list > /dev/null\nsudo apt update\nsudo apt install -y antigravity",
+    "selected": false
+  },
+  {
+    "id": "nodejs24",
+    "name": "Node.js 24 (via NVM)",
+    "description": "JavaScript runtime",
+    "script": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\nnvm install 24\nnvm use 24\nnvm alias default 24",
+    "selected": false
+  },
+  {
+    "id": "postman",
+    "name": "Postman",
+    "description": "API testing tool",
+    "script": "sudo snap install postman",
+    "selected": false
+  }
+]

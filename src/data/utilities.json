@@ -1,0 +1,51 @@
+[
+  {
+    "id": "ibus_bamboo",
+    "name": "Ibus-Bamboo",
+    "description": "Bộ gõ tiếng Việt",
+    "script": "sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo -y\nsudo apt update\nsudo apt install -y ibus ibus-bamboo\nim-config -n ibus",
+    "selected": false
+  },
+  {
+    "id": "flameshot",
+    "name": "Flameshot",
+    "description": "Screenshot tool",
+    "script": "sudo apt install -y flameshot",
+    "selected": false
+  },
+  {
+    "id": "bitwarden",
+    "name": "Bitwarden",
+    "description": "Password Manager",
+    "script": "sudo snap install bitwarden",
+    "selected": false
+  },
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "description": "Messaging app",
+    "script": "sudo snap install telegram-desktop",
+    "selected": false
+  },
+  {
+    "id": "whitesur_theme",
+    "name": "WhiteSur Theme (macOS style)",
+    "description": "macOS UI themes & cursors",
+    "script": "sudo apt install -y gnome-tweaks gnome-shell-extensions sassc libglib2.0-dev-bin\nmkdir -p ~/.mac-theme-setup && cd ~/.mac-theme-setup\ngit clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git --depth=1 && cd WhiteSur-gtk-theme && ./install.sh -d ~/.themes -t all && cd ..\ngit clone https://github.com/vinceliuice/WhiteSur-icon-theme.git --depth=1 && cd WhiteSur-icon-theme && ./install.sh -d ~/.icons && cd ..\ngit clone https://github.com/vinceliuice/WhiteSur-cursors.git --depth=1 && cd WhiteSur-cursors && ./install.sh -d ~/.icons && cd ~\nrm -rf ~/.mac-theme-setup",
+    "selected": false
+  },
+  {
+    "id": "filezilla",
+    "name": "FileZilla",
+    "description": "FTP solution",
+    "script": "sudo apt install -y filezilla",
+    "selected": false
+  },
+  {
+    "id": "termius",
+    "name": "Termius",
+    "description": "SSH client",
+    "script": "sudo snap install termius-app",
+    "selected": false
+  }
+]
