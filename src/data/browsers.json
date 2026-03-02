@@ -30,6 +30,27 @@
       "description": "Trình duyệt mã nguồn mở",
       "script": "sudo snap install firefox",
       "selected": false
+    },
+    {
+      "id": "coccoc",
+      "name": "Cốc Cốc",
+      "description": "Trình duyệt của người Việt",
+      "script": "wget -qO coccoc.deb https://coccoc.com/download/linux\nsudo apt install -y ./coccoc.deb\nrm coccoc.deb",
+      "selected": false
+    },
+    {
+      "id": "opera",
+      "name": "Opera",
+      "description": "Trình duyệt web với nhiều tính năng tích hợp",
+      "script": "sudo snap install opera",
+      "selected": false
+    },
+    {
+      "id": "vivaldi",
+      "name": "Vivaldi",
+      "description": "Trình duyệt web với nhiều tính năng tích hợp",
+      "script": "sudo snap install vivaldi",
+      "selected": false
     }
   ]
 }

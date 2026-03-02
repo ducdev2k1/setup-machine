@@ -119,7 +119,7 @@ sudo apt install -y curl wget gnupg apt-transport-https software-properties-comm
 
       <div className="max-w-6xl mx-auto relative z-10">
         <header className="mb-12 text-center">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-teal-300 drop-shadow-sm">
+          <h1 className="text-5xl md:text-6xl leading-normal font-extrabold mb-4 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-teal-300 drop-shadow-sm">
             Tạo Script Cài Đặt
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
